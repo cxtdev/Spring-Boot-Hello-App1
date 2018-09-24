@@ -12,7 +12,6 @@ phases:
   build:
     commands:
       - echo Build started on `date`
-      - mvn clean install
       - echo Building the Docker image...          
       - docker build -t $REPOSITORY_URI:latest .
       - docker tag $REPOSITORY_URI:latest $REPOSITORY_URI:$IMAGE_TAG
@@ -26,5 +25,4 @@ phases:
       - printf '[{"name":"test-container","imageUri":"%s"}]' $REPOSITORY_URI:$IMAGE_TAG > imagedefinitions.json
 artifacts:
     files:
-      - target/Spring-Boot-Hello-App-0.0.1-SNAPSHOT.war
       - imagedefinitions.json
