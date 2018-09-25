@@ -11,8 +11,8 @@ phases:
   install:
     commands:
       - echo Entered the install phase…
-	    – apt-get update -y
-	    – apt-get install -y software-properties-common
+      – apt-get update -y
+      – apt-get install -y software-properties-common
       – add-apt-repository ppa:openjdk-r/ppa
       – apt-get update -y
       – apt-get install -y openjdk-8-jdk
@@ -31,8 +31,8 @@ phases:
       - printf '[{"name":"docker_demo","imageUri":"%s"}]' $REPOSITORY_URI:$IMAGE_TAG > imagedefinitions.json
   post_build:
     commands:
-	  - docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_REPO_NAME:$IMAGE_TAG
+      - docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_REPO_NAME:$IMAGE_TAG
 artifacts:
     files:
-	  - target/Spring-Boot-Hello-App-0.0.1-SNAPSHOT.war
-	  - imagedefinitions.json
+      - target/Spring-Boot-Hello-App-0.0.1-SNAPSHOT.war
+      - imagedefinitions.json
