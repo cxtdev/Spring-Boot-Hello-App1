@@ -16,7 +16,7 @@ public class SpringBootHelloAppApplication {
 	@RequestMapping("/hello")
 	public String hello() {
 
-		return "\"result \": {\n" + "\n" + "\"greetings\" : \"This is a Test Page generated using Code Pipeline and deployed to ECS\" \n" + "\n" + "}";
+		return "\"result \": {\n" + "\n" + "\"greetings\" : \"Test docker image from ECS\" \n" + "\n" + "}";
 
 	}
 }
