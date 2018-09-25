@@ -11,17 +11,19 @@ phases:
     commands:
       - echo Entered the install phase...
       - apt-get update -y
+      - apt-get install -y software-properties-common
+      - add-apt-repository ppa:openjdk-r/ppa
       - apt-get install -y maven
   pre_build:
     commands:
-      – echo Logging in to Amazon ECR…
-      – $(aws ecr get-login –no-include-email –region $AWS_DEFAULT_REGION)
+      - echo Logging in to Amazon ECR…
+      - $(aws ecr get-login –no-include-email –region $AWS_DEFAULT_REGION)
   build:
     commands:
-      – mvn clean install
-      – echo Building the Docker image…
-      – docker build -t $IMAGE_REPO_NAME:$IMAGE_TAG .
-      – docker tag $IMAGE_REPO_NAME:$IMAGE_TAG $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_REPO_NAME:$IMAGE_TAG
+      - mvn clean install
+      - echo Building the Docker image…
+      - docker build -t $IMAGE_REPO_NAME:$IMAGE_TAG .
+      - docker tag $IMAGE_REPO_NAME:$IMAGE_TAG $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_REPO_NAME:$IMAGE_TAG
       - printf '[{"name":"docker_demo","imageUri":"%s"}]' $REPOSITORY_URI:$IMAGE_TAG > imagedefinitions.json
   post_build:
     commands:
