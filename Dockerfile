@@ -161,7 +161,7 @@ RUN set -e \
 	&& if ! echo "$nativeLines" | grep 'INFO: Loaded APR based Apache Tomcat Native library' >&2; then \
 		echo >&2 "$nativeLines"; \
 		exit 1; \
-	fi
+	fi \
 
 # Adding context file to allow access to admin console remotely
 #ADD context.xml /usr/local/tomcat/webapps/manager/META-INF/context.xml
