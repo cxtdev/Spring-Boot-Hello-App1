@@ -6,7 +6,6 @@ env:
     IMAGE_REPO_NAME: "docker_demo"
     IMAGE_TAG: "latest"
     AWS_ACCOUNT_ID: "337226440425"
-	
 phases:
   install:
     commands:
