@@ -9,7 +9,6 @@ env:
 phases:
   install:
     commands:
-      - echo Entered the install phase…
       – apt-get update -y
       – apt-get install -y software-properties-common
       – add-apt-repository ppa:openjdk-r/ppa
