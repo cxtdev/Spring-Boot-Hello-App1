@@ -177,5 +177,5 @@ COPY target/Spring-Boot-Hello-App-0.0.1-SNAPSHOT.war /usr/local/tomcat/webapps/ 
 #RUN chmod +x /usr/local/bin/env.sh
 #CMD ["/usr/local/bin/env.sh", "run"]
 
-EXPOSE 8080
+EXPOSE 8080 \
 CMD ["catalina.sh", "run"] \
