@@ -2,10 +2,10 @@ version: 0.2
 
 env:
   variables:
-    AWS_DEFAULT_REGION: 'us-west-2"
-	  IMAGE_REPO_NAME: "docker_demo"
-	  IMAGE_TAG: "latest"
-	  AWS_ACCOUNT_ID: "337226440425"
+    AWS_DEFAULT_REGION: "us-west-2"
+    IMAGE_REPO_NAME: "docker_demo"
+    IMAGE_TAG: "latest"
+    AWS_ACCOUNT_ID: "337226440425"
 	
 phases:
   install:
