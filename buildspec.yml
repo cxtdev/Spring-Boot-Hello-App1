@@ -9,28 +9,28 @@ env:
 phases:
   install:
     commands:
-    – apt-get update -y
-    – apt-get install -y software-properties-common
-    – add-apt-repository ppa:openjdk-r/ppa
-    – apt-get update -y
-    – apt-get install -y openjdk-8-jdk
-    – apt-get install -y maven
+      – apt-get update -y
+      – apt-get install -y software-properties-common
+      – add-apt-repository ppa:openjdk-r/ppa
+      – apt-get update -y
+      – apt-get install -y openjdk-8-jdk
+      – apt-get install -y maven
   pre_build:
     commands:
-    – echo Logging in to Amazon ECR…
-    – $(aws ecr get-login –no-include-email –region $AWS_DEFAULT_REGION)
+      – echo Logging in to Amazon ECR…
+      – $(aws ecr get-login –no-include-email –region $AWS_DEFAULT_REGION)
   build:
     commands:
-    – mvn clean
-    – mvn install
-    – echo Building the Docker image…
-    – docker build -t $IMAGE_REPO_NAME:$IMAGE_TAG .
-    – docker tag $IMAGE_REPO_NAME:$IMAGE_TAG $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_REPO_NAME:$IMAGE_TAG
-    - printf '[{"name":"docker_demo","imageUri":"%s"}]' $REPOSITORY_URI:$IMAGE_TAG > imagedefinitions.json
+      – mvn clean
+      – mvn install
+      – echo Building the Docker image…
+      – docker build -t $IMAGE_REPO_NAME:$IMAGE_TAG .
+      – docker tag $IMAGE_REPO_NAME:$IMAGE_TAG $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_REPO_NAME:$IMAGE_TAG
+      - printf '[{"name":"docker_demo","imageUri":"%s"}]' $REPOSITORY_URI:$IMAGE_TAG > imagedefinitions.json
   post_build:
     commands:
-    - docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_REPO_NAME:$IMAGE_TAG
+      - docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_REPO_NAME:$IMAGE_TAG
 artifacts:
     files:
-    - target/Spring-Boot-Hello-App-0.0.1-SNAPSHOT.war
-    - imagedefinitions.json
+      - target/Spring-Boot-Hello-App-0.0.1-SNAPSHOT.war
+      - imagedefinitions.json
