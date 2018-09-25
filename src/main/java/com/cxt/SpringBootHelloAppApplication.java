@@ -16,7 +16,7 @@ public class SpringBootHelloAppApplication {
 	@RequestMapping("/hello")
 	public String hello() {
 
-		return "\"result \": {\n" + "\n" + "              \"greetings\" : \"Its Working \" \n" + "\n" + "}";
+		return "\"result \": {\n" + "\n" + "\"greetings\" : \"Test Page \" \n" + "\n" + "}";
 
 	}
 }
