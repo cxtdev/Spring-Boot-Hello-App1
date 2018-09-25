@@ -170,7 +170,7 @@ RUN set -e \
 #ADD tomcat-users.xml /usr/local/tomcat/conf/
 
 # Adding Spring Boot WAR
-COPY target/Spring-Boot-Hello-App-0.0.1-SNAPSHOT.war /usr/local/tomcat/webapps/
+COPY target/Spring-Boot-Hello-App-0.0.1-SNAPSHOT.war /usr/local/tomcat/webapps/ \
 
 # Adding shell script to execute DB environment file
 #ADD env.sh /usr/local/bin/env.sh
@@ -178,4 +178,4 @@ COPY target/Spring-Boot-Hello-App-0.0.1-SNAPSHOT.war /usr/local/tomcat/webapps/
 #CMD ["/usr/local/bin/env.sh", "run"]
 
 EXPOSE 8080
-CMD ["catalina.sh", "run"]
+CMD ["catalina.sh", "run"] \
