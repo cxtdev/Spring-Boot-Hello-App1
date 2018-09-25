@@ -9,7 +9,9 @@ env:
 phases:
   install:
     commands:
-      – apt-get install -y maven
+      - echo Entered the install phase...
+      - apt-get update -y
+      - apt-get install -y maven
   pre_build:
     commands:
       – echo Logging in to Amazon ECR…
