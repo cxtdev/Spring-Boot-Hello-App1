@@ -16,7 +16,7 @@ public class SpringBootHelloAppApplication {
 	@RequestMapping("/hello")
 	public String hello() {
 
-		return "\"result \": {\n" + "\n" + "\"greetings\" : \"Test docker image from ECS\" \n" + "\n" + "}";
+		return "\"result \": {\n" + "\n" + "\"greetings\" : \"All working fine.\" \n" + "\n" + "}";
 
 	}
 }
